@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>el:挂载点</title>
+</head>
+<body>
+    {{ message }} (Vue作用范围：在被挂载的div元素之内)
+    <div id="app" class="app">
+        {{ message }}
+        <span>{{ message }} (挂载元素的子元素亦在Vue作用范围之内)</span>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",  // id选择器
+            // el: ".app",  // class选择器
+            // el: "div",   // 标签选择器
+            data: {
+                message: "黑马程序员"
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="tuto">
+      <template>
+          <button-clicked v-bind:initial-count="0"></button-clicked>
+       </template>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        Vue.component('button-clicked', {
+          props: ['initialCount'],
+          data: () => ({
+            count: 0,
+          }),
+          template: '<button v-on:click="onClick">Clicked {{ count }} times</button>',
+          computed: {
+            countTimesTwo() {
+              return this.count * 2;
+            }
+          },
+          watch: {
+            count(newValue, oldValue) {
+              console.log(`The value of count is changed from ${oldValue} to ${newValue}.`);
+            }
+          },
+          methods: {
+            onClick() {
+              this.count += 1;
+            }
+          },
+          mounted() {
+            this.count = this.initialCount;
+          }
+      });
+        
+      new Vue({
+          el: '#tuto',
+      });
+    </script>
+</body>
+</html>
